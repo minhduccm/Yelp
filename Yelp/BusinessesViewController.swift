@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class BusinessesViewController: UIViewController, UITableViewDelegate {
   
@@ -21,9 +22,9 @@ class BusinessesViewController: UIViewController, UITableViewDelegate {
   var filteredCategories = [String]()
   var filteredSort: YelpSortMode? = nil
   var filteredDeal: Bool = false
+  var filterDistance: Int? = nil
 
   @IBOutlet weak var businessesTableView: UITableView!
-  
   
   func loadData() {
     Business.searchWithTerm("Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
@@ -35,7 +36,12 @@ class BusinessesViewController: UIViewController, UITableViewDelegate {
   }
   
   func filterData() {
-    Business.searchWithTerm(searchBar.text!, sort: filteredSort, categories: filteredCategories, deals: filteredDeal) { (businesses: [Business]?, error: Error?) -> Void in
+    // Display HUD right before the request is made
+    MBProgressHUD.showAdded(to: self.view, animated: true)
+    Business.searchWithTerm(searchBar.text!, sort: filteredSort, categories: filteredCategories, deals: filteredDeal, distance: filterDistance) { (businesses: [Business]?, error: Error?) -> Void in
+      
+      // Hide HUD once the network request comes back (must be done on main UI thread)
+      MBProgressHUD.hide(for: self.view, animated: true)
       if let businesses = businesses {
         self.businesses = businesses
         self.businessesTableView.reloadData()
@@ -146,6 +152,14 @@ extension BusinessesViewController : FiltersViewControllerDelegate {
   func filtersViewController(filtersViewController: FiltersViewController, didUpdateFilters filters: [String : AnyObject]) {
     if filters["categories"] != nil {
       filteredCategories = (filters["categories"] as? [String])!
+    }
+    
+    if filters["distance"] != nil {
+      filterDistance = (filters["distance"] as? Int)!
+    }
+    
+    if filters["sortBy"] != nil {
+      filteredSort = YelpSortMode(rawValue: (filters["sortBy"] as? Int)!)
     }
     filterData()
   }

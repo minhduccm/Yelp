@@ -19,12 +19,6 @@ class SwitchCell: UITableViewCell {
   
   weak var switchCellDelegate: SwitchCellDelegate?
   
-  var category: [String:String]! = [:] {
-    didSet {
-      switchLabel.text = category["name"]
-    }
-  }
-  
   override func awakeFromNib() {
     super.awakeFromNib()
     
@@ -37,7 +31,6 @@ class SwitchCell: UITableViewCell {
   
   func switchValueChanged() {
     switchCellDelegate?.switchCell?(switchCell: self, didChangeValue: onSwitch.isOn)
-    
   }
 
 }

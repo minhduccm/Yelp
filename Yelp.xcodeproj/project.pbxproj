@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		530799E31DBEBD5C001B8B4B /* SelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530799E21DBEBD5C001B8B4B /* SelectionCell.swift */; };
 		537CC71F1DBCA3A800385C0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537CC71E1DBCA3A800385C0A /* AppDelegate.swift */; };
 		537CC7241DBCA3A800385C0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 537CC7221DBCA3A800385C0A /* Main.storyboard */; };
 		537CC7261DBCA3A800385C0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 537CC7251DBCA3A800385C0A /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		530799E21DBEBD5C001B8B4B /* SelectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionCell.swift; sourceTree = "<group>"; };
 		537CC71B1DBCA3A800385C0A /* Yelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		537CC71E1DBCA3A800385C0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		537CC7231DBCA3A800385C0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			children = (
 				537CC73A1DBCB6B700385C0A /* BusinessCell.swift */,
 				537CC73C1DBCE46C00385C0A /* SwitchCell.swift */,
+				530799E21DBEBD5C001B8B4B /* SelectionCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				537CC7381DBCAE2300385C0A /* YelpClient.swift in Sources */,
 				537CC73F1DBCE6EE00385C0A /* FiltersViewController.swift in Sources */,
 				537CC7351DBCADEB00385C0A /* Business.swift in Sources */,
+				530799E31DBEBD5C001B8B4B /* SelectionCell.swift in Sources */,
 				537CC7321DBCAD8400385C0A /* BusinessesViewController.swift in Sources */,
 				537CC71F1DBCA3A800385C0A /* AppDelegate.swift in Sources */,
 				537CC73D1DBCE46C00385C0A /* SwitchCell.swift in Sources */,

@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="170"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="idv-Ts-zQM" id="yw8-dQ-DLu">
-                                            <frame key="frameInset" width="375" height="169.5"/>
+                                            <frame key="frameInset" width="375" height="169"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xnN-vZ-8Gq">
@@ -152,7 +152,7 @@
                                         <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4RS-aB-ggH" id="wfu-Ic-Maf">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lYf-8E-88B">
@@ -172,6 +172,29 @@
                                         <connections>
                                             <outlet property="onSwitch" destination="sdD-oH-67r" id="d3F-dm-Ugz"/>
                                             <outlet property="switchLabel" destination="lYf-8E-88B" id="i7k-5Z-YdQ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectionCell" id="15g-u0-sbI" customClass="SelectionCell" customModule="Yelp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="136" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="15g-u0-sbI" id="eWM-sQ-3WX">
+                                            <frame key="frameInset" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQM-A2-tb8">
+                                                    <frame key="frameInset" minX="15" minY="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="IQM-A2-tb8" firstAttribute="centerY" secondItem="eWM-sQ-3WX" secondAttribute="centerY" id="6oF-am-ClC"/>
+                                                <constraint firstItem="IQM-A2-tb8" firstAttribute="leading" secondItem="eWM-sQ-3WX" secondAttribute="leading" constant="14" id="o6q-AL-BDi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="selectionLabel" destination="IQM-A2-tb8" id="5oe-HY-wyj"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

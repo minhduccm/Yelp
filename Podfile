@@ -8,5 +8,5 @@ target 'Yelp' do
   # Pods for Yelp
   pod 'AFNetworking', '~> 2.5'
   pod 'BDBOAuth1Manager', '1.6.0'
-
+  pod 'MBProgressHUD'
 end
