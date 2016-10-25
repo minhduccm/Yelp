@@ -57,6 +57,8 @@ class YelpClient: BDBOAuth1RequestOperationManager {
     // Default the location to San Francisco
     var parameters: [String : AnyObject] = ["term": term as AnyObject, "ll": "37.785771,-122.406165" as AnyObject]
     
+    print("deals: ", deals)
+    
     if sort != nil {
       parameters["sort"] = sort!.rawValue as AnyObject?
     }

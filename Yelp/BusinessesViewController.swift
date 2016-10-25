@@ -21,7 +21,7 @@ class BusinessesViewController: UIViewController, UITableViewDelegate {
   // filter criteria vars
   var filteredCategories = [String]()
   var filteredSort: YelpSortMode? = nil
-  var filteredDeal: Bool = false
+  var filteredDeal: Bool? = nil
   var filterDistance: Int? = nil
 
   @IBOutlet weak var businessesTableView: UITableView!
@@ -153,13 +153,17 @@ extension BusinessesViewController : FiltersViewControllerDelegate {
     if filters["categories"] != nil {
       filteredCategories = (filters["categories"] as? [String])!
     }
-    
     if filters["distance"] != nil {
       filterDistance = (filters["distance"] as? Int)!
     }
-    
     if filters["sortBy"] != nil {
       filteredSort = YelpSortMode(rawValue: (filters["sortBy"] as? Int)!)
+    }
+    
+    print("first deal: ", filters["isOfferingDeal"])
+    
+    if filters["isOfferingDeal"] != nil {
+      filteredDeal = (filters["isOfferingDeal"] as? Bool)!
     }
     filterData()
   }

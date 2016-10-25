@@ -33,6 +33,10 @@ struct SortBy {
   var value: Int
 }
 
+struct Deal {
+  var name: String
+}
+
 class FiltersViewController: UIViewController {
 
   @IBOutlet weak var tableView: UITableView!
@@ -42,6 +46,7 @@ class FiltersViewController: UIViewController {
   var categorySwitchStates = [Int:Bool]()
   var selectedDistance: Int?
   var selectedSortBy: Int?
+  var isOfferingDeal: Bool?
   var sections = [FilterSection]()
   
   func getCategories() -> [Category] {
@@ -64,7 +69,18 @@ class FiltersViewController: UIViewController {
             SortBy(name: "Hightest rate", value: 2)]
   }
   
+  func getDeals() -> [Deal] {
+    return [Deal(name: "Offering a Deal")]
+  }
+  
   func buildSections() -> [FilterSection]{
+    
+    let dealsSection = FilterSection(
+      header: "",
+      type: "deals",
+      data: getDeals() as AnyObject
+    )
+    
     let categoriesSection = FilterSection(
       header: "Categories",
       type: "categories",
@@ -83,7 +99,7 @@ class FiltersViewController: UIViewController {
       data: getSortByItems() as AnyObject
     )
     
-    return [categoriesSection, distancesSection, sortByItemsSection]
+    return [dealsSection, categoriesSection, distancesSection, sortByItemsSection]
   }
   
   func customNavigationBar() {
@@ -116,7 +132,7 @@ class FiltersViewController: UIViewController {
     dismiss(animated: true, completion: nil)
     var filters = [String:AnyObject]()
     var selectedCategories = [String]()
-    var categories = sections[0].data as? [Category]
+    var categories = sections[1].data as? [Category]
     for (row, isSelected) in categorySwitchStates {
       if isSelected {
         selectedCategories.append((categories?[row].code)!)
@@ -132,6 +148,7 @@ class FiltersViewController: UIViewController {
     if selectedSortBy != nil {
       filters["sortBy"] = selectedSortBy as AnyObject?
     }
+    filters["isOfferingDeal"] = isOfferingDeal as AnyObject?
     
     filtersViewControllerDelegate?.filtersViewController?(filtersViewController: self, didUpdateFilters: filters)
   }
@@ -155,6 +172,14 @@ extension FiltersViewController : UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     switch sections[indexPath.section].type {
+    case "deals":
+      let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
+      var deals = sections[indexPath.section].data as? [Deal]
+      cell.switchLabel.text = deals?[indexPath.row].name
+      cell.onSwitch.isOn = isOfferingDeal ?? false
+      cell.switchCellDelegate = self
+      return cell
+      
     case "categories":
       let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
       print(sections[indexPath.section].data)
@@ -219,6 +244,9 @@ extension FiltersViewController : SwitchCellDelegate {
     let type = sections[indexPath.section].type
     if type == "categories" {
       categorySwitchStates[indexPath.row] = value
+    } else if type == "deals" {
+      print("here: ", value)
+      isOfferingDeal = value
     }
   }
 }
